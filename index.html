@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>販售網頁</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #35424a;
+            color: #ffffff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .product {
+            border: 1px solid #dddddd;
+            margin: 15px 0;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .product img {
+            max-width: 150px;
+            margin-right: 20px;
+        }
+        .product-info {
+            flex: 1;
+        }
+        .buy-button {
+            background: #5cb85c;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .about {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>歡迎來到豆卡兒童樂園</h1>
+</header>
+
+<div class="container">
+    <h2>產品列表</h2>
+
+    <div class="product">
+        <img src="product1.jpg" alt="產品1">
+        <div class="product-info">
+            <h3>產品名稱 1</h3>
+            <p>產品描述：這是一個很棒的產品。</p>
+            <p>價格：NT$ 500</p>
+            <button class="buy-button" onclick="orderProduct(1, '產品名稱 1')">購買</button>
+        </div>
+    </div>
+
+    <div class="product">
+        <img src="product2.jpg" alt="產品2">
+        <div class="product-info">
+            <h3>產品名稱 2</h3>
+            <p>產品描述：這是另一個很棒的產品。</p>
+            <p>價格：NT$ 800</p>
+            <button class="buy-button" onclick="orderProduct(2, '產品名稱 2')">購買</button>
+        </div>
+    </div>
+
+    <div class="about">
+        <h2>關於我</h2>
+        <p>負責人：廖慧玲。統編：95227576。兒童用品、玩具</p>
+    </div>
+</div>
+
+<script>
+    function orderProduct(productId, productName) {
+        const lineId = prompt("請輸入您的 LINE ID 以便聯絡：");
+        if (lineId) {
+            fetch('order.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ productId: productId, lineId: lineId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(`感謝您的訂單！您已訂購 ${productName}，我們將通過 LINE 聯絡您：${lineId}`);
+                } else {
+                    alert('訂單失敗，請稍後再試。');
+                }
+            });
+        } else {
+            alert("請輸入有效的 LINE ID！");
+        }
+    }
+</script>
+
+</body>
+</html>
