@@ -29,14 +29,16 @@
             margin: 15px 0;
             padding: 10px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column; /* 改為垂直排列 */
+            align-items: flex-start; /* 對齊到左側 */
         }
         .product img {
             max-width: 150px;
-            margin-right: 20px;
+            margin-bottom: 10px; /* 增加圖片和描述之間的間距 */
         }
         .product-info {
             flex: 1;
+            width: 100%; /* 確保產品資訊區塊佔滿寬度 */
         }
         .buy-button {
             background: #5cb85c;
@@ -69,13 +71,15 @@
         <img src="product2.jpg" alt="產品2">
         <div class="product-info">
             <h3>simba濕紙巾</h3>
-            <p>1.通過SGS檢驗，符合CN8157、ISO9001檢驗標準。</p>
-   2.嚴選加厚嫘縈水織布，質地柔軟細緻。</p>
-   3.採用EDI超純水淨化設備，透過RO逆滲透多重淨水系統，水質超純淨。</p>
-   4.添加綠茶、蘆薈、維他命E等保濕配方，可滋潤寶寶柔嫩肌膚。</p>
-   5.無添加MI、MCI、Paraben、色素、香料、酒精、螢光劑。</p>
-   6.弱酸性親膚配方，溫和不刺激，全家人皆適用。</p>
-   7.附貼心上蓋，使用、收藏更便利。</p>
+            <div class="product-description">
+                <p>1.通過SGS檢驗，符合CN8157、ISO9001檢驗標準。</p>
+                <p>2.嚴選加厚嫘縈水織布，質地柔軟細緻。</p>
+                <p>3.採用EDI超純水淨化設備，透過RO逆滲透多重淨水系統，水質超純淨。</p>
+                <p>4.添加綠茶、蘆薈、維他命E等保濕配方，可滋潤寶寶柔嫩肌膚。</p>
+                <p>5.無添加MI、MCI、Paraben、色素、香料、酒精、螢光劑。</p>
+                <p>6.弱酸性親膚配方，溫和不刺激，全家人皆適用。</p>
+                <p>7.附貼心上蓋，使用、收藏更便利。</p>
+            </div>
             <p>價格：NT$ 450</p>
             <button class="buy-button" onclick="orderProduct(2, '產品名稱 2')">購買</button>
         </div>
