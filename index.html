@@ -140,7 +140,7 @@
 
 <script>
     function orderProduct(productId, productName) {
-        const lineId = prompt("請輸入您的 LINE ID 以便聯絡：");
+        const lineId = prompt("由於網站更新中，請加入此LINE以便連絡：WiLL-0983");
         if (lineId) {
             fetch('order.php', {
                 method: 'POST',
@@ -152,13 +152,13 @@
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    alert(`感謝您的訂單！您已訂購 ${productName}，我們將通過 LINE 聯絡您：${lineId}`);
+                    alert(`感謝您的訂單！您已訂購 ${productName}，由於網站更新中，請加入此LINE以便連絡：WiLL-0983${lineId}`);
                 } else {
                     alert('訂單失敗，請稍後再試。');
                 }
             });
         } else {
-            alert("請輸入有效的 LINE ID！");
+            alert("由於網站更新中，請加入此LINE以便連絡：WiLL-0983");
         }
     }
 </script>
